@@ -6,11 +6,37 @@
     <title>Document</title>
 </head>
 <body>
-    <p id="test"></p>
+    <script>
+    // Create the first contact object
+const contact1 = {
+  name: "Alice Johnson",
+  phone: "123-456-7890",
+  email: "alice@example.com",
+  
+  getInfo: function() {
+    return `Name: ${this.name}, Phone: ${this.phone}, Email: ${this.email}`;
+  }
+};
 
-<script>
-var x = 5 + 2 + 3;
-document.getElementById("test").innerHTML = x;
+// Create a function that prints contact info
+function printContactInfo(contact) {
+  console.log(contact.getInfo());
+}
+
+
+const contact2 = {
+  name: "Bob Smith",
+  phone: "987-654-3210",
+  email: "bob@example.com",
+  
+  getInfo: function() {
+    return `Name: ${this.name}, Phone: ${this.phone}, Email: ${this.email}`;
+  }
+};
+
+
+printContactInfo(contact1);
+printContactInfo(contact2);
 </script>
 </body>
 </html>
