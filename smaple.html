@@ -1,42 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-    // Create the first contact object
-const contact1 = {
-  name: "Alice Johnson",
-  phone: "123-456-7890",
-  email: "alice@example.com",
-  
-  getInfo: function() {
-    return `Name: ${this.name}, Phone: ${this.phone}, Email: ${this.email}`;
-  }
-};
-
-// Create a function that prints contact info
-function printContactInfo(contact) {
-  console.log(contact.getInfo());
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* Entire page background */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
+/* Full screen layout */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
-const contact2 = {
-  name: "Bob Smith",
-  phone: "987-654-3210",
-  email: "bob@example.com",
-  
-  getInfo: function() {
-    return `Name: ${this.name}, Phone: ${this.phone}, Email: ${this.email}`;
-  }
-};
+    /* A soft background like the screenshot */
+    background: linear-gradient(to right, #bcd0e0, #f7f7f7);
+}
 
+/* White login form */
+.login-box {
+    background: white;
+    padding: 35px;
+    width: 380px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+}
 
-printContactInfo(contact1);
-printContactInfo(contact2);
-</script>
+/* Heading in red like the screenshot */
+.login-box h2 {
+    color: #d9534f;
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+}
+
+/* Remember checkbox text */
+.remember {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Login button */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #d9534f;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ===========================
+   MOBILE RESPONSIVE SECTION
+   =========================== */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        height: auto;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="login-box">
+        <h2>Login Form</h2>
+
+        <label>Email :</label>
+        <input type="text" class="input">
+
+        <label>Password :</label>
+        <input type="password" class="input">
+
+        <div class="remember">
+            <input type="checkbox"> Remember Me
+        </div>
+
+        <button class="login-btn">Login</button>
+    </div>
+</div>
+
 </body>
 </html>
