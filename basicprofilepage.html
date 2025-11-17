@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>User Access Check</h2>
+
+<button onclick="checkAccess()">Check Access</button>
+
+<p id="result"></p>
+
+<script>
+let user = {
+    name: "Alice",
+    age: 19,
+    isAdmin: true
+};
+
+function checkAccess() {
+
+    const ageExists = ("age" in user)? "Age property satisfied": "Age property does not satisfied";
+
+    console.log(ageExists);
+
+    const access = (user.age >= 18 && user.isAdmin)? "Access Granted": "Access Denied";
+
+    document.getElementById("result").textContent = access;
+
+    delete user.age;
+
+    console.log("After deletion:", user);
+}
+</script>
+
+</body>
+</html>
+
