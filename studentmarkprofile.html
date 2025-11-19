@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Student Result </h2>
+
+<p id="profile"></p>
+
+<script>
+var students = [
+{ name: "John", score: 75 },
+    { name: "Alice", score: 92 },
+    { name: "Sam", score: 45 },
+    { name: "Rita", score: 33 },
+    { name: "Tom", score: 88 }
+];
+var allNames = [];
+students.forEach(function(student) {
+  allNames.push(student.name);
+});
+var above60 = students
+  .filter(function(student) {
+    return student.score > 60;
+  })
+  .map(function(student) {
+    return student.name;
+  });
+var totalScore = students.reduce(function(total, student) {
+  return total + student.score;
+}, 0);
+
+var allPassed = students.every(function(student) {
+  return student.score > 35;
+});
+
+var topperPresent = students.some(function(student) {
+  return student.score > 90;
+});
+
+var sortedStudents = students.sort(function(a, b) {
+  return b.score - a.score;
+});
+
+document.getElementById("profile").innerHTML =
+  "<b>All Student Names:</b> " + allNames.join(", ") + "<br><br>" +
+  "<b>Students Scoring Above 60:</b> " + above60.join(", ") + "<br><br>" +
+  "<b>Total Score of All Students:</b> " + totalScore + "<br><br>" +
+  "<b>All Students Passed?</b> " + allPassed + "<br><br>" +
+  "<b>Any Student Scored More Than 90?</b> " + topperPresent + "<br><br>" +
+  "<b>Students Sorted by Score (Desc):</b><br>" +
+  sortedStudents.map(function(s) {
+    return s.name + " - " + s.score;
+  }).join("<br>");
+</script>
+
+</body>
+</html>
