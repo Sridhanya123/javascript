@@ -1,100 +1,147 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      /* Entire page background */
-body {
-    margin: 0;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html, body {
     font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
-/* Full screen layout */
-.container {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT SIDE (Laptop view image/gradient) */
+.leftside {
+    flex: 1;
+    background: linear-gradient(to bottom, #948fd2, #caae9c);
+    display: flex;
+}
+
+/* RIGHT SIDE */
+.rightside {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-
-    /* A soft background like the screenshot */
-    background: linear-gradient(to right, #bcd0e0, #f7f7f7);
-}
-
-/* White login form */
-.login-box {
     background: white;
-    padding: 35px;
-    width: 380px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    padding: 20px;
 }
 
-/* Heading in red like the screenshot */
-.login-box h2 {
-    color: #d9534f;
+h1 {
+    color: orangered;
     margin-bottom: 20px;
+    font-size: 26px;
+    text-align: left;
 }
 
-/* Input fields */
-.input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #aaa;
+/* LOGIN FORM BOX */
+form.login {
+    width: 80%;
+    max-width: 380px;
+    background: white;
 }
 
-/* Remember checkbox text */
-.remember {
-    font-size: 14px;
-    margin-bottom: 15px;
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
-/* Login button */
-.login-btn {
+input[type="email"],
+input[type="password"] {
     width: 100%;
     padding: 12px;
-    background: #d9534f;
-    color: white;
-    font-size: 18px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: orangered;
     border: none;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
 }
 
-/* ===========================
-   MOBILE RESPONSIVE SECTION
-   =========================== */
-@media (max-width: 600px) {
-    .container {
-        padding: 15px;
-        height: auto;
-    }
-
-    .login-box {
-        width: 100%;
-        max-width: 350px;
-    }
+button:hover {
+    opacity: 0.8;
 }
 
-    </style>
+/* ----------- MOBILE VIEW ----------- */
+@media screen and (max-width: 767px) {
+
+    .leftside {
+        display: none;
+    }
+
+    .main {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rightside {
+        width: 100%;
+        height: 100%;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form.login {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+}
+</style>
 </head>
 <body>
+<div class="main">
+<div class="leftside"></div>
+<div class="rightside">
+<form>
+      <h1>Login Form</h1>
+      <label>Email:</label>
+      <input type="email">
 
-<div class="container">
-    <div class="login-box">
-        <h2>Login Form</h2>
+      <label>Password:</label>
+      <input type="password">
 
-        <label>Email :</label>
-        <input type="text" class="input">
+      <div class="remember">
+        <input type="checkbox">
+        <span>Remember Me</span>
+      </div>
 
-        <label>Password :</label>
-        <input type="password" class="input">
-
-        <div class="remember">
-            <input type="checkbox"> Remember Me
-        </div>
-
-        <button class="login-btn">Login</button>
-    </div>
+      <button>Login</button>
+    </form>
 </div>
-
+</div>
 </body>
 </html>
