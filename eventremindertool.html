@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Reminder Tool</title>
+</head>
+<body>
+
+<h2>Event Reminder Tool</h2>
+
+<label>Enter a past date:</label>
+<input type="date" id="userDate">
+<button onclick="processDate()">Submit</button>
+
+<hr>
+
+<div id="output"></div>
+
+<script>
+function processDate() {
+    const input = document.getElementById("userDate").value;
+
+    // Handle no input using logical OR (no if)
+    const validInput = input || "2000-01-01";
+
+    const pastDate = new Date(validInput);
+    const now = new Date();
+
+    // Extract parts
+    const year = pastDate.getFullYear();
+    const monthName = pastDate.toLocaleString("default", { month: "long" });
+    const day = pastDate.getDate();
+
+    // Calculate full years passed
+    let yearsPassed = now.getFullYear() - year;
+
+    // Determine whether the date has not occurred yet this year (true=1, false=0)
+    const notReachedThisYear =
+        (now.getMonth() < pastDate.getMonth()) * 1 +
+        (now.getMonth() === pastDate.getMonth() && now.getDate() < pastDate.getDate()) * 1;
+
+    // Adjust using math (no if)
+    yearsPassed = yearsPassed - (notReachedThisYear ? 1 : 0);
+
+    // Select message using array indexing (no if)
+    const messageList = [
+        "It has been less than a year since that date.",
+        "It has been more than a year since that date."
+    ];
+
+    // Convert condition to 0 or 1
+    const index = yearsPassed >= 1 ? 1 : 0;
+
+    const message = messageList[index];
+
+    // Output
+    document.getElementById("output").innerHTML = `
+        <h3>Results</h3>
+        <p><strong>Date Entered:</strong> ${monthName} ${day}, ${year}</p>
+        <p><strong>Full Years Passed:</strong> ${yearsPassed}</p>
+        <p><strong>Message:</strong> ${message}</p>
+    `;
+}
+</script>
+
+</body>
+</html>
